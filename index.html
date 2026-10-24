@@ -1,0 +1,1369 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>BP 打磨舱 · 双创赛事商业计划书诊断平台</title>
+<style>
+:root{
+  --bg:#F2F1ED;
+  --bg2:#FAF9F7;
+  --card:#FFFFFF;
+  --ink:#232428;            /* 深灰 主色 */
+  --ink2:#3B3D42;
+  --ink3:#5A5C63;
+  --dim:#767881;
+  --dim2:#A7A8AE;
+  --warn:#E2622A;           /* 警示橙 */
+  --warn2:#C24C16;          /* 橙色文字（对比度） */
+  --warnS:#FCF0E9;
+  --warnS2:#F7DFD0;
+  --line:#E2E1DC;
+  --line2:#CFCFC8;
+  --mono:Consolas,"SFMono-Regular",Menlo,"Courier New",monospace;
+}
+*{box-sizing:border-box}
+html,body{margin:0;padding:0}
+body{background:var(--bg);color:var(--ink);
+  font-family:"PingFang SC","Microsoft YaHei","Segoe UI",system-ui,sans-serif;
+  font-size:14px;line-height:1.75;-webkit-font-smoothing:antialiased}
+.wrap{position:relative;max-width:1060px;margin:0 auto;padding:0 22px 90px}
+a{color:var(--warn2)}
+button{font-family:inherit;font-size:13px;color:var(--ink);cursor:pointer;
+  background:var(--card);border:1px solid var(--line2);border-radius:7px;padding:7px 14px;transition:.15s}
+button:hover{border-color:var(--warn);color:var(--warn2)}
+button.primary{background:var(--ink);border-color:var(--ink);color:#F2F1ED;font-weight:600}
+button.primary:hover{background:var(--warn);border-color:var(--warn);color:#fff}
+button.warn{background:var(--warn);border-color:var(--warn);color:#fff;font-weight:600}
+button.warn:hover{background:var(--warn2);border-color:var(--warn2);color:#fff}
+button.ghost{background:transparent;border-color:var(--line2);color:var(--dim)}
+button.sm{padding:4px 11px;font-size:12px;border-radius:6px}
+button:disabled{opacity:.38;cursor:not-allowed}
+button:disabled:hover{border-color:var(--line2);color:var(--ink)}
+.mono{font-family:var(--mono)}
+textarea,input[type=text],input[type=number]{font-family:inherit;font-size:13.5px;line-height:1.8;color:var(--ink);
+  width:100%;background:var(--bg2);border:1px solid var(--line);border-radius:9px;padding:10px 12px;
+  outline:none;transition:.16s;resize:vertical}
+textarea:focus,input:focus{border-color:var(--warn);background:#fff}
+textarea::placeholder,input::placeholder{color:var(--dim2)}
+input[type=number]{width:auto}
+
+/* ---------- header ---------- */
+header{position:sticky;top:0;z-index:40;background:rgba(242,241,237,.95);backdrop-filter:blur(8px);
+  border-bottom:1px solid var(--line)}
+.hd{max-width:1060px;margin:0 auto;padding:10px 22px 8px;display:flex;align-items:center;gap:12px;flex-wrap:wrap}
+.logo{display:flex;align-items:baseline;gap:9px}
+.logo h1{margin:0;font-size:17px;letter-spacing:1.5px;color:var(--ink);font-weight:800}
+.logo h1 b{color:var(--warn);font-weight:800}
+.logo .en{font-family:var(--mono);font-size:9.5px;letter-spacing:3px;color:var(--dim2)}
+.hd .sp{flex:1}
+.nav{display:flex;gap:5px;flex-wrap:wrap}
+.nav button{border-color:transparent;background:transparent;color:var(--dim);font-size:12.5px;padding:5px 9px}
+.nav button:hover{color:var(--warn2);background:var(--warnS)}
+.nav button.on{color:var(--ink);font-weight:600;background:var(--card);border-color:var(--line2)}
+
+/* ---------- hero ---------- */
+.hero{padding:34px 0 4px}
+.kicker{font-family:var(--mono);font-size:10.5px;letter-spacing:3px;color:var(--warn2);margin-bottom:9px}
+.hero h2{margin:0 0 9px;font-size:25px;line-height:1.5;color:var(--ink);letter-spacing:.5px;font-weight:800}
+.hero h2 span{color:var(--warn)}
+.hero p{margin:0;color:var(--dim);max-width:680px}
+.pledge{margin:16px 0 0;display:grid;grid-template-columns:repeat(auto-fit,minmax(228px,1fr));gap:9px}
+.pledge div{background:var(--card);border:1px solid var(--line);border-left:3px solid var(--warn);
+  border-radius:7px;padding:9px 12px;font-size:12.5px;color:var(--ink3);line-height:1.7}
+.pledge div b{display:block;color:var(--ink);font-weight:700;font-size:12.5px;margin-bottom:2px}
+.pledge div b i{font-family:var(--mono);font-style:normal;color:var(--warn2);margin-right:6px}
+
+/* ---------- section ---------- */
+section{margin-top:32px;scroll-margin-top:72px}
+.sec-h{display:flex;align-items:baseline;gap:10px;margin:0 0 3px}
+.sec-h .no{font-family:var(--mono);font-size:12px;color:var(--warn2);letter-spacing:1.5px}
+.sec-h h3{margin:0;font-size:16.5px;color:var(--ink);letter-spacing:.5px;font-weight:700}
+.sec-h .en{font-family:var(--mono);font-size:9.5px;color:var(--dim2);letter-spacing:2px}
+.sec-sub{margin:0 0 14px;font-size:12.5px;color:var(--dim)}
+.panel{background:var(--card);border:1px solid var(--line);border-radius:11px;padding:18px}
+.note{font-size:12px;color:var(--dim);background:var(--bg2);border:1px dashed var(--line2);
+  border-radius:8px;padding:9px 12px;margin-top:11px;line-height:1.7}
+.note b{color:var(--ink);font-weight:600}
+.rt{font-family:var(--mono);font-size:11px;color:var(--dim2)}
+
+/* ---------- 01 十二页 ---------- */
+.pgwrap{display:grid;grid-template-columns:236px 1fr;gap:14px;align-items:start}
+@media(max-width:820px){.pgwrap{grid-template-columns:1fr}}
+.pglist{display:flex;flex-direction:column;gap:4px;max-height:560px;overflow:auto;padding-right:3px}
+.pgi{display:flex;align-items:center;gap:8px;padding:7px 10px;border:1px solid var(--line);border-radius:7px;
+  background:var(--bg2);cursor:pointer;transition:.14s;font-size:12.5px;color:var(--ink3)}
+.pgi:hover{border-color:var(--warn);background:#fff}
+.pgi.on{background:var(--ink);border-color:var(--ink);color:#F2F1ED;font-weight:600}
+.pgi.on .pgno{color:var(--warn)}
+.pgno{font-family:var(--mono);font-size:10.5px;color:var(--dim2);width:16px}
+.pgi .t{flex:1;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.pgi .st{font-family:var(--mono);font-size:10px;color:var(--dim2);width:34px;text-align:right}
+.pgi.on .st{color:#F2F1ED}
+.pgi.done .st{color:var(--warn2)}
+.pgi.on.done .st{color:var(--warn)}
+.pgbody{background:var(--card);border:1px solid var(--line);border-radius:11px;padding:18px}
+.pghd{display:flex;align-items:center;gap:9px;flex-wrap:wrap;margin-bottom:4px}
+.pghd h4{margin:0;font-size:16px;font-weight:700}
+.tagpri{font-family:var(--mono);font-size:10px;border-radius:4px;padding:2px 7px;background:var(--ink);color:#F2F1ED}
+.tagpri.p1{background:var(--warn);color:#fff}
+.tagpri.p2{background:var(--bg2);color:var(--dim);border:1px solid var(--line2)}
+.pgen{font-family:var(--mono);font-size:9.5px;color:var(--dim2);letter-spacing:2px}
+.qbox{border-top:1px solid var(--line);padding-top:12px;margin-top:12px}
+.qbox:first-of-type{border-top:none;margin-top:6px;padding-top:0}
+.qt{margin:0 0 6px;font-size:13.5px;font-weight:600;color:var(--ink)}
+.qt i{font-family:var(--mono);font-style:normal;color:var(--warn2);font-size:11px;margin-right:5px}
+.qhint{margin:0 0 6px;font-size:12px;color:var(--dim)}
+.pgnav{display:flex;gap:8px;margin-top:14px}
+.pgmeter{display:flex;align-items:center;gap:9px;margin-bottom:10px}
+.mbar{flex:1;height:5px;background:var(--bg);border-radius:3px;overflow:hidden}
+.mbar i{display:block;height:100%;background:var(--warn);width:0;transition:width .3s}
+
+/* ---------- 02 三十问 ---------- */
+.dimtabs{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:12px}
+.dimtabs .dt{border:1px solid var(--line2);background:var(--card);border-radius:20px;padding:5px 13px;
+  font-size:12.5px;color:var(--ink3);cursor:pointer;transition:.15s;user-select:none}
+.dimtabs .dt:hover{border-color:var(--warn)}
+.dimtabs .dt.on{background:var(--ink);border-color:var(--ink);color:#F2F1ED;font-weight:600}
+.dimtabs .dt .sc{font-family:var(--mono);font-size:10.5px;opacity:.75;margin-left:5px}
+.qcard{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:14px 16px}
+.qcard+.qcard{margin-top:9px}
+.qtop{display:flex;align-items:baseline;gap:9px}
+.qtop .qi{font-family:var(--mono);font-size:11px;color:var(--warn2)}
+.qtop .qq{margin:0;font-size:14px;font-weight:600;flex:1}
+.badge{font-family:var(--mono);font-size:10px;padding:2px 7px;border-radius:4px;border:1px solid var(--line2);color:var(--dim2)}
+.badge.pass{background:var(--ink);border-color:var(--ink);color:#F2F1ED}
+.badge.mid{background:var(--warnS);border-color:var(--warnS2);color:var(--warn2)}
+.badge.fail{background:var(--warn);border-color:var(--warn);color:#fff}
+.badge{white-space:nowrap}
+.fb{margin-top:9px;background:var(--bg2);border-left:3px solid var(--warn);border-radius:6px;padding:9px 12px;font-size:12.5px;color:var(--ink3);line-height:1.8}
+.fb b{color:var(--ink)}
+.fb .k{font-family:var(--mono);font-size:10.5px;color:var(--warn2);margin-right:5px}
+.fb .act{color:var(--warn2);font-weight:600}
+
+/* ---------- 03 路演 ---------- */
+.gear{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-bottom:14px}
+@media(max-width:820px){.gear{grid-template-columns:1fr}}
+.gearc{border:1px solid var(--line);border-radius:10px;background:var(--bg2);padding:12px 14px;cursor:pointer;transition:.15s}
+.gearc:hover{border-color:var(--warn);background:#fff}
+.gearc.on{border-color:var(--warn);background:var(--warnS);box-shadow:0 0 0 2px var(--warnS2)}
+.gearc .g1{display:flex;align-items:baseline;gap:7px}
+.gearc .min{font-family:var(--mono);font-size:19px;font-weight:700;color:var(--ink)}
+.gearc.on .min{color:var(--warn2)}
+.gearc .gsub{font-size:11.5px;color:var(--dim);margin-top:2px}
+.scriptbox{background:var(--card);border:1px solid var(--line);border-radius:11px;padding:18px}
+.sline{display:grid;grid-template-columns:74px 1fr;gap:10px;padding:9px 0;border-top:1px solid var(--line)}
+.sline:first-child{border-top:none}
+.sline .sk{font-size:11.5px;color:var(--dim2)}
+.sline .sk b{display:block;font-family:var(--mono);font-size:11px;color:var(--warn2)}
+.sline .sv{font-size:13px;color:var(--ink2);white-space:pre-wrap;word-break:break-word}
+.sline.cut .sv{color:var(--dim2)}
+.scope{display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin-bottom:10px;font-size:12px;color:var(--dim)}
+.scope .wc{font-family:var(--mono);font-size:12px}
+.scope .wc.over{color:var(--warn2);font-weight:700}
+.timer{display:flex;align-items:center;gap:10px;padding:10px 14px;background:var(--ink);border-radius:9px;margin-bottom:12px}
+.timer .tt{font-family:var(--mono);font-size:22px;color:#F2F1ED;letter-spacing:2px}
+.timer .tt.warn{color:var(--warn)}
+.timer button{background:transparent;border-color:rgba(242,241,237,.45);color:#F2F1ED}
+.timer button:hover{background:rgba(226,98,42,.25);color:#fff;border-color:var(--warn)}
+
+/* ---------- 04 答辩 ---------- */
+.rounds{display:flex;align-items:center;gap:8px;margin-bottom:14px;flex-wrap:wrap}
+.rd{display:flex;align-items:center;gap:6px;font-size:12px;color:var(--dim2)}
+.rd i{font-family:var(--mono);font-style:normal;width:20px;height:20px;line-height:19px;text-align:center;
+  border:1px solid var(--line2);border-radius:50%;font-size:10.5px;background:var(--card)}
+.rd.on{color:var(--ink);font-weight:600}
+.rd.on i{background:var(--warn);border-color:var(--warn);color:#fff}
+.rd.done i{background:var(--ink);border-color:var(--ink);color:#F2F1ED}
+.rd .ln{width:18px;height:1px;background:var(--line2)}
+.judge{background:var(--ink);border-radius:11px;padding:15px 17px;margin-bottom:12px}
+.judge .jl{font-family:var(--mono);font-size:10px;letter-spacing:2px;color:var(--warn);margin-bottom:7px}
+.judge .jtext{margin:0;color:#F2F1ED;font-size:14.5px;line-height:1.8}
+.judge .jtext em{font-style:normal;color:var(--warn);font-weight:600}
+.demo{background:var(--bg2);border:1px dashed var(--line2);border-radius:9px;padding:13px 15px;margin-bottom:12px}
+.demo .dl{font-family:var(--mono);font-size:10px;letter-spacing:2px;color:var(--warn2);margin-bottom:6px}
+.demo .dtxt{font-size:13.5px;color:var(--ink2);line-height:1.9;white-space:pre-wrap}
+.diff{display:grid;grid-template-columns:repeat(2,1fr);gap:9px;margin-top:11px}
+@media(max-width:820px){.diff{grid-template-columns:1fr}}
+.dif{background:var(--card);border:1px solid var(--line);border-radius:8px;padding:10px 12px;font-size:12.5px}
+.dif .dk{font-weight:600;color:var(--ink);margin-bottom:3px}
+.dif.hit{border-color:var(--warn);background:var(--warnS)}
+.dif .ds{color:var(--dim);font-size:12px}
+.dif .dm{font-family:var(--mono);font-size:10.5px;color:var(--warn2)}
+.anslog{border-top:1px solid var(--line);margin-top:12px;padding-top:11px}
+.anslog .al{font-size:12.5px;color:var(--ink3);padding:7px 0;border-bottom:1px dashed var(--line);display:grid;grid-template-columns:52px 1fr;gap:9px}
+.anslog .al .r{font-family:var(--mono);font-size:10.5px;color:var(--warn2)}
+
+/* ---------- 05 诊断 ---------- */
+.drop{border:2px dashed var(--line2);border-radius:11px;background:var(--bg2);padding:22px;text-align:center;transition:.15s}
+.drop.over{border-color:var(--warn);background:var(--warnS)}
+.drop .dz{font-size:13.5px;color:var(--ink3);margin-bottom:8px}
+.drop .dz b{color:var(--ink)}
+.drop .df{font-family:var(--mono);font-size:11px;color:var(--dim2)}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+@media(max-width:820px){.grid2{grid-template-columns:1fr}}
+.calcbox{background:var(--card);border:1px solid var(--line);border-radius:11px;padding:16px}
+.calcrow{display:flex;align-items:center;gap:9px;margin-bottom:8px}
+.calcrow label{flex:1;font-size:12.5px;color:var(--ink3)}
+.calcrow input{width:118px;text-align:right;font-family:var(--mono)}
+.calcrow .u{font-size:11.5px;color:var(--dim2);width:34px}
+.calcout{margin-top:10px;padding:11px 13px;background:var(--bg2);border:1px solid var(--line);border-radius:8px;
+  font-family:var(--mono);font-size:13px;color:var(--ink)}
+.calcout.wait{color:var(--dim2);font-family:inherit;font-size:12.5px;line-height:1.7}
+.calcout.ready{border-color:var(--warn);background:var(--warnS)}
+.calcout .big{font-size:17px;color:var(--warn2);font-weight:700}
+.rep{background:var(--card);border:1px solid var(--line);border-radius:11px;overflow-x:auto;margin-top:14px}
+.rephd{background:var(--ink);border-radius:10px 10px 0 0;padding:13px 17px;display:flex;align-items:center;gap:12px;flex-wrap:wrap}
+.rephd .r1{font-size:14.5px;color:#F2F1ED;font-weight:700;letter-spacing:.5px}
+.rephd .r2{font-family:var(--mono);font-size:11px;color:var(--warn)}
+.rephd .sp{flex:1}
+.reptb{width:100%;border-collapse:collapse;font-size:12.5px;table-layout:fixed;min-width:880px}
+.reptb th:nth-child(1),.reptb td:nth-child(1){width:88px}
+.reptb th:nth-child(2),.reptb td:nth-child(2){width:78px}
+.reptb th:nth-child(3),.reptb td:nth-child(3){width:146px}
+.reptb th:nth-child(4),.reptb td:nth-child(4){width:172px}
+.reptb th:nth-child(6),.reptb td:nth-child(6){width:178px}
+.reptb td{word-break:break-word}
+.reptb th{background:var(--bg2);color:var(--ink);font-size:11.5px;font-weight:700;text-align:left;
+  padding:8px 10px;border-bottom:1px solid var(--line);white-space:nowrap}
+.reptb td{padding:9px 10px;border-bottom:1px solid var(--line);vertical-align:top;color:var(--ink2);line-height:1.7}
+.reptb tr:last-child td{border-bottom:none}
+.reptb td.dim{font-weight:700;color:var(--ink);white-space:nowrap}
+.reptb td.ev{font-size:12px;color:var(--ink3);font-style:italic}
+.reptb td.act{color:var(--warn2)}
+.reptb td.rec{font-size:12px;color:var(--dim)}
+.score{display:inline-flex;gap:2px;vertical-align:middle}
+.score s{width:9px;height:9px;background:var(--line2);border-radius:2px;text-decoration:none}
+.score s.f{background:var(--warn)}
+.score s.f3{background:var(--ink)}
+.rlist{padding:4px 0}
+.ri{padding:11px 17px;border-bottom:1px solid var(--line)}
+.ri:last-child{border-bottom:none}
+.ri .rhd{display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin-bottom:5px}
+.sev{font-family:var(--mono);font-size:10px;padding:2px 7px;border-radius:4px;color:#fff;background:var(--ink)}
+.sev.p0{background:var(--warn)}
+.sev.p1{background:var(--warnS);color:var(--warn2);border:1px solid var(--warnS2)}
+.sev.p2{background:var(--bg2);color:var(--dim);border:1px solid var(--line2)}
+.ri .rname{font-size:13.5px;font-weight:700;color:var(--ink)}
+.ri .rdim{font-family:var(--mono);font-size:10.5px;color:var(--dim2)}
+.rkv{display:grid;grid-template-columns:64px 1fr;gap:6px 9px;font-size:12.5px;color:var(--ink2);line-height:1.7}
+.rkv .k{font-family:var(--mono);font-size:10.5px;color:var(--warn2);padding-top:2px}
+.rkv .v.ev{color:var(--ink3);font-style:italic}
+.rkv .v.act{color:var(--warn2);font-weight:600}
+.rkv .v.rec{color:var(--dim)}
+.empty{padding:26px;text-align:center;color:var(--dim2);font-size:13px}
+footer{margin-top:38px;padding-top:16px;border-top:1px solid var(--line);font-size:11.5px;color:var(--dim2);
+  display:flex;gap:14px;flex-wrap:wrap}
+footer .fmono{font-family:var(--mono)}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="hd">
+    <div class="logo">
+      <h1>BP <b>打磨舱</b></h1>
+      <div class="en">PITCH DECK OPS</div>
+    </div>
+    <div class="sp"></div>
+    <div class="nav" id="nav">
+      <button data-go="m1" class="on">01 十二页</button>
+      <button data-go="m2">02 三十问</button>
+      <button data-go="m3">03 路演裁剪</button>
+      <button data-go="m4">04 毒舌答辩</button>
+      <button data-go="m5">05 诊断报告</button>
+    </div>
+  </div>
+</header>
+
+<div class="wrap">
+
+  <section class="hero">
+    <div class="kicker">互联网+ / 挑战杯 / 三创赛 · 评委视角拆解</div>
+    <h2>把商业计划书拆开，<span>按页找漏洞</span>，逐条补证据。</h2>
+    <p>不是写作助手，是评审台。你把 BP 交上来，它按十二页结构、三十问挑战库、三档路演时长、三轮答辩追问逐项过一遍，最后给出按严重度排序的清单式诊断报告。每一条风险都附一句 BP 原文和一条能今天就做的补救动作。</p>
+    <div class="pledge">
+      <div><b><i>✕</i>禁止吹捧式反馈</b>不出现「前景广阔」「团队优秀」这类评价，只输出风险、证据与动作。</div>
+      <div><b><i>✕</i>禁止虚构市场数据</b>任何行业规模、增长率、渗透率都必须你填参数，本工具不代你编数字。</div>
+      <div><b><i>✕</i>不承诺获奖概率</b>不做获奖率、晋级率、评分预测，只做逻辑校验与表达打磨。</div>
+    </div>
+  </section>
+
+  <!-- ============ 01 ============ -->
+  <section id="m1">
+    <div class="sec-h"><span class="no">01</span><h3>BP 十二页结构模板</h3><span class="en">12-PAGE SKELETON</span></div>
+    <p class="sec-sub">每页三道必答题。空着的页不进路演稿、不进诊断报告——先填，再谈打磨。</p>
+    <div class="pgwrap">
+      <div>
+        <div class="pgmeter">
+          <div class="mbar"><i id="pgbar"></i></div>
+          <span class="rt" id="pgtxt">0/12</span>
+        </div>
+        <div class="pglist" id="pglist"></div>
+      </div>
+      <div class="pgbody" id="pgbody"></div>
+    </div>
+    <div class="note"><b>口径：</b>十二页按互联网+ 与 挑战杯 通用评审表归并得出，优先级 P0 = 缺了就是硬伤，P1 = 答辩必被追问，P2 = 影响观感。路演裁剪模块按此优先级取舍。</div>
+  </section>
+
+  <!-- ============ 02 ============ -->
+  <section id="m2">
+    <div class="sec-h"><span class="no">02</span><h3>评委视角 30 问挑战库</h3><span class="en">30-QUESTION GAUNTLET</span></div>
+    <p class="sec-sub">五维度 × 六问。每题给过、存疑、未答到点三档判定，判定只数你答到了几个要点——不是评价你写得好不好。</p>
+    <div class="dimtabs" id="dimtabs"></div>
+    <div id="qlist"></div>
+    <div class="note"><b>判定口径：</b>每题三个要点，答中 2 个 = 过，1 个 = 存疑，0 个 = 未答到点。判定用关键词匹配，是提示不是终审；你写到的具体数字与出处仍由人来判断。</div>
+  </section>
+
+  <!-- ============ 03 ============ -->
+  <section id="m3">
+    <div class="sec-h"><span class="no">03</span><h3>路演稿生成与三档裁剪</h3><span class="en">5 / 8 / 15 MIN CUT</span></div>
+    <p class="sec-sub">按 240 字/分钟折算：5 分钟 1200 字、8 分钟 1920 字、15 分钟 3600 字。稿子由你在十二页里填的内容生成，超时的页会被标灰并列出删除顺序。</p>
+    <div class="panel">
+      <div class="gear" id="gear"></div>
+      <div class="timer">
+        <span class="tt" id="tmr">05:00</span>
+        <button class="sm" id="tmrstart">开始计时</button>
+        <button class="sm" id="tmrreset">重置</button>
+        <span class="rt" style="color:#F2F1ED;opacity:.6" id="tmrhint">照稿念一遍，超时就是临场最大的扣分项</span>
+      </div>
+      <div class="scriptbox" id="scriptbox"></div>
+      <div class="note" id="m3note"></div>
+    </div>
+  </section>
+
+  <!-- ============ 04 ============ -->
+  <section id="m4">
+    <div class="sec-h"><span class="no">04</span><h3>毒舌评委 · 三轮答辩模拟</h3><span class="en">3-ROUND DEFENSE</span></div>
+    <p class="sec-sub">前两轮评委只追问，不给你答案；第三轮先给一段示范应答，再由你改写自己的版本——对照四项差异，看你的版本缺的是结构还是证据。</p>
+    <div class="panel">
+      <div class="rounds" id="rounds"></div>
+      <div id="r4stage"></div>
+      <div class="anslog" id="anslog"></div>
+    </div>
+    <div class="note"><b>记录口径：</b>三轮应答全部留痕，按「轮次 / 评委问 / 团队答」三字段导出，供指导老师复盘。评委问题取材于你在三十问里未过、存疑的题——答得好，问题就少。</div>
+  </section>
+
+  <!-- ============ 05 ============ -->
+  <section id="m5">
+    <div class="sec-h"><span class="no">05</span><h3>上传 BP · 输出诊断报告</h3><span class="en">DIAGNOSIS REPORT</span></div>
+    <p class="sec-sub">支持 PDF / PPTX / TXT / MD。本地解析，文件不出本机。5 分钟内出报告，风险项不超过 10 条，按严重度排序，每条一条补救动作。</p>
+    <div class="grid2">
+      <div>
+        <div class="drop" id="drop">
+          <div class="dz"><b>拖入 BP 文件</b>，或点击选择</div>
+          <div class="df">.pdf / .pptx / .txt / .md &nbsp;·&nbsp; ≤ 40MB</div>
+          <input type="file" id="file" hidden accept=".pdf,.pptx,.txt,.md,.markdown">
+        </div>
+        <div class="note" id="finfo" style="margin-top:11px">也可以直接把 BP 正文粘到右侧。页数多的 PDF 建议同时粘贴一次关键段落，避免扫描件识别不全。</div>
+      </div>
+      <div>
+        <textarea id="pastetxt" rows="7" placeholder="粘贴 BP 正文（技术可行性、市场测算、商业模式、团队、社会价值相关段落）…"></textarea>
+        <div style="display:flex;gap:8px;margin-top:10px;flex-wrap:wrap">
+          <button class="primary" id="btnparse">解析并诊断</button>
+          <button class="ghost" id="btnclear">清空</button>
+          <button class="ghost" id="btndemo">载入示例空泛 BP</button>
+          <span class="rt" id="parsetip" style="align-self:center"></span>
+        </div>
+      </div>
+    </div>
+
+    <div class="calcbox" style="margin-top:14px">
+      <div style="display:flex;align-items:baseline;gap:10px;margin-bottom:9px">
+        <b style="font-size:14px">市场规模自算台</b>
+        <span class="rt">不填参数，不出结果——这里没有默认值可以抄</span>
+      </div>
+      <div class="grid2">
+        <div>
+          <div class="calcrow"><label>可触达用户数（3 年内）</label><input type="number" id="p_users" placeholder="—"><span class="u">人</span></div>
+          <div class="calcrow"><label>客单价</label><input type="number" id="p_price" placeholder="—"><span class="u">元/次</span></div>
+          <div class="calcrow"><label>年复购频次</label><input type="number" id="p_freq" placeholder="—"><span class="u">次/年</span></div>
+          <div class="calcrow"><label>3 年渗透率</label><input type="number" id="p_pene" placeholder="—"><span class="u">%</span></div>
+          <div style="display:flex;gap:8px;margin-top:8px">
+            <button class="sm" id="btncalc">按我的参数算 SOM</button>
+            <button class="sm ghost" id="btnclrcalc">清空参数</button>
+          </div>
+        </div>
+        <div>
+          <div class="calcout wait" id="calcout">四个参数留空任意一个，这里就保持空白。本工具不会替你假设渗透率，也不会引用任何行业报告给数字。</div>
+          <div class="note" style="margin-top:9px">算出的 SOM 会与 BP 正文里出现的金额口径对撞：偏差超过 3 倍，直接进风险清单。</div>
+        </div>
+      </div>
+    </div>
+
+    <div id="reportzone"></div>
+  </section>
+
+  <footer>
+    <span class="fmono">BP 打磨舱 · PITCH DECK OPS</span>
+    <span>本地运行，文件不上传</span>
+    <span>不做获奖概率预测</span>
+    <span class="fmono" id="storeinfo"></span>
+  </footer>
+</div>
+
+<script>
+/* ============================================================
+   BP 打磨舱 — 本地评审引擎
+   ============================================================ */
+var LS='bpforge_v1';
+var ST={pages:{},ans:{},demoSelf:'',gear:8,round:1,rlog:[]};
+try{var _s=localStorage.getItem(LS); if(_s){var _o=JSON.parse(_s); for(var k in _o) ST[k]=_o[k];}}catch(e){}
+function save(){try{localStorage.setItem(LS,JSON.stringify(ST))}catch(e){}}
+function esc(s){return String(s==null?'':s).replace(/[&<>"']/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]})}
+function $(id){return document.getElementById(id)}
+function cLen(s){return (s||'').replace(/\s/g,'').length}
+
+/* ---------- 数据：十二页 ---------- */
+var PAGES=[
+ ['封面与一句话定位','COVER','P0',[
+   '用 20 字以内说清：你们为谁解决什么？',
+   '把技术名词全删掉，这句话还剩什么？',
+   '评委看完这一页，能原样复述你们的定位吗？']],
+ ['痛点与需求验证','PAIN','P0',[
+   '痛点来自多少次一线访谈？访谈对象是谁？',
+   '被访谈者为这个问题现在花了多少钱或多少时间？',
+   '如果这个问题不存在，用户会损失什么？折算成金额是多少？']],
+ ['解决方案与产品形态','SOLUTION','P0',[
+   '交付物是什么形态：硬件、软件、服务还是组合？',
+   '用户拿到后第一步做什么？需要改变什么习惯？',
+   '相比现有替代方案，用户少做几步？']],
+ ['技术壁垒与可行性','TECH','P0',[
+   '核心技术当前的成熟度到哪一级？拿什么证明？',
+   '是别人做不出来，还是别人没去做？差距在哪？',
+   '关键器件、数据或算法断供时，替代方案是什么？']],
+ ['市场规模测算','MARKET','P1',[
+   'TAM 是自上而下还是自下而上算的？口径写清楚了吗？',
+   '客单价、复购频次、渗透率三个数分别来自哪里？',
+   '渗透率砍一半，收入模型还成立吗？']],
+ ['商业模式与定价','MODEL','P0',[
+   '谁付钱？付钱的人和用产品的人是同一个吗？',
+   '一单收多少、成本多少、毛利多少？',
+   '获客成本多少？多久回本？']],
+ ['竞品与差异化','RIVAL','P1',[
+   '列出 3 个真实竞品，逐个说你输在哪、赢在哪？',
+   '如果大厂明天做同样的事，你靠什么活下来？',
+   '你的差异化是技术、渠道、成本还是关系？']],
+ ['落地进展与真实数据','TRACTION','P0',[
+   '目前有多少付费用户？付费金额多少？',
+   '有没有合同、订单、意向书？金额与签署方是谁？',
+   '过去 6 个月最关键的三个数据点是什么？']],
+ ['团队结构与分工','TEAM','P1',[
+   '谁对技术负责？谁对收入负责？两人是同一个吗？',
+   '成员专业背景与项目需求对得上吗？缺哪块能力？',
+   '指导老师、企业导师具体能提供什么？可核查吗？']],
+ ['财务预测与融资需求','FINANCE','P1',[
+   '未来 12 个月现金流怎么走？最缺钱的是哪个月？',
+   '这笔钱花在哪三项？每项对应什么可验收结果？',
+   '预测里的增长率，假设依据是什么？']],
+ ['社会价值与可持续性','IMPACT','P1',[
+   '受益人数怎么算出来的？统计口径是什么？',
+   '项目结束后还能持续运转吗？靠什么收入维持？',
+   '带动就业、增收或减排，能量化的是哪一项？']],
+ ['风险与里程碑','RISK','P2',[
+   '最可能导致项目停摆的三个风险是什么？',
+   '每个风险的触发条件和应对动作分别是什么？',
+   '未来 12 个月每季度交付什么？验收标准是什么？']]
+];
+
+/* ---------- 数据：30 问 ---------- */
+var DIMS=[
+ ['技术可行性',[
+  ['核心技术现在到第几级成熟度？拿什么证明？',['样机','测试','验证','数据','第三方','中试','检测'],'「已完成验证」四个字不算验证，谁测的、怎么测的、测了几组？'],
+  ['这个技术是别人做不出来，还是别人没去做？',['对比','差距','替代','文献','专利检索','现有方案'],'「国内领先」是评价不是证据，说说领先谁、领先多少。'],
+  ['从实验室结果到量产，中间哪一步你还没走？',['工艺','良率','产线','成本','一致性','供应链'],'实验结果和可交付是两回事，中间那段你打算怎么过。'],
+  ['专利是你们自己的吗？权利要求覆盖了什么？',['专利号','权利要求','受让','学校','职务发明'],'挂着导师名字的专利，权属说清楚了吗？'],
+  ['关键器件或数据断供，你的替代方案是什么？',['备选','供应商','国产','自建','开源'],'单一供应商就是单点故障，断了你几天能切。'],
+  ['你写的技术指标，测试条件与对照基线是什么？',['条件','基线','对照组','样本量','环境'],'没有对照组的 99% 准确率，等于没说。']]],
+ ['市场规模测算',[
+  ['市场数字是自上而下还是自下而上算的？',['自下而上','自上而下','口径','拆解','加总'],'行业报告抄来的数字，说清它统计的是什么。'],
+  ['TAM 里哪一部分是你 3 年内真摸得到的？',['SAM','SOM','区域','细分','可触达'],'万亿市场跟你没关系，你能卖进去的那块才叫市场。'],
+  ['客单价、复购频次、渗透率，三个数从哪来？',['客单价','频次','渗透率','访谈','问卷','实测'],'三个数只要有一个是猜的，整个测算就是猜的。'],
+  ['测算里的用户数，有几个人是你真谈过的？',['访谈','名单','问卷','样本','回访'],'没谈过 30 个目标用户就谈市场，是纸面推演。'],
+  ['渗透率砍一半，你的收入模型还成立吗？',['敏感性','压力测试','下限','保守'],'只会算乐观情形，评委一定会替你算悲观情形。'],
+  ['你引用的行业报告，口径和你的产品定义一致吗？',['口径','定义','统计范围','年份','来源'],'报告里的市场包含你卖不起的那部分，就不算你的市场。']]],
+ ['商业模式',[
+  ['谁付钱？付钱的人和用产品的人是同一个吗？',['付费方','客户','采购方','政府','学校'],'用户不为之付费的产品，要说清谁替他付。'],
+  ['一单收多少、成本多少、毛利多少？',['毛利','成本','定价','单价','利润率'],'说不清毛利，等于说不清生意。'],
+  ['客户为什么现在就要换掉现有方案？',['替代成本','切换','现有方案','痛点强度'],'「能解决痛点」不等于「值得现在换」。'],
+  ['收入是项目制还是订阅制？明年还复现吗？',['订阅','复购','续约','项目制','一次性'],'一次性项目收入撑不起估值，也说不清增长。'],
+  ['获客成本多少？多久回本？',['获客','CAC','回本','渠道','转化'],'不知道获客成本，规模越大亏得越稳。'],
+  ['规模扩大后，成本涨得快还是收入涨得快？',['边际','规模','人力','复制','单位经济'],'每单都要人盯，规模就是负担不是壁垒。']]],
+ ['团队结构',[
+  ['五个人里，谁对技术负责、谁对收入负责？',['技术负责人','负责人','分工','运营','商务'],'全员都是负责人，等于没人负责。'],
+  ['成员专业背景与项目需求对得上吗？',['专业','年级','经历','课程','项目经验'],'跨专业不是问题，说清补了什么能力才是。'],
+  ['谁全职？谁上课期间参与？时间怎么排？',['全职','时间','课时','排期','投入'],'课表和项目周期冲突时，谁让步？'],
+  ['股权与分工写清楚了吗？分歧时谁拍板？',['股权','比例','决策','拍板','协议'],'平均股权是最不稳定的结构，答辩必问。'],
+  ['缺的那块能力，打算招人、外包还是学？',['招聘','外包','顾问','学习','合作'],'承认缺口并给出补法，比假装全能可信。'],
+  ['指导老师和企业导师具体能提供什么？',['导师','资源','渠道','客户','技术'],'导师挂名不干活，评委一眼看穿。']]],
+ ['社会价值',[
+  ['解决了什么社会问题？受益人数怎么算出来的？',['受益','人数','口径','统计','覆盖'],'受益人数是算出来的，不是写出来的。'],
+  ['这件事政府或市场已在做，你多做了哪一步？',['已有','现有','差别','补充','增量'],'重复造已有的公益，社会价值是零。'],
+  ['项目结束后还能持续运转吗？靠什么维持？',['可持续','收入','运营','移交','自我造血'],'靠补贴活着的项目，比赛一结束就停。'],
+  ['带动就业、增收、减排，你能量化哪一项？',['就业','增收','减排','节本','工时'],'至少一项有数字、有口径、有来源。'],
+  ['方案对弱势群体是真可用还是假想可用？',['适老','无障碍','试点','反馈','实地'],'没让他们真用过一次，就是想象。'],
+  ['公益部分和营收部分，谁补贴谁？',['交叉补贴','免费','付费','平衡','比例'],'说不清两边关系，评委默认你在用公益包装商业。']]]
+];
+
+/* ---------- 01 十二页 ---------- */
+var curPage=0;
+function renderPglist(){
+  var h='';
+  PAGES.forEach(function(p,i){
+    var v=ST.pages[i]||['','',''];
+    var n=v.filter(function(x){return (x||'').trim().length>3}).length;
+    h+='<div class="pgi'+(i===curPage?' on':'')+(n===3?' done':'')+'" data-p="'+i+'">'+
+       '<span class="pgno">'+String(i+1).padStart(2,'0')+'</span>'+
+       '<span class="t">'+esc(p[0])+'</span><span class="st">'+n+'/3</span></div>';
+  });
+  $('pglist').innerHTML=h;
+  var done=PAGES.filter(function(_,i){var v=ST.pages[i]||[];return v.filter(function(x){return (x||'').trim().length>3}).length===3}).length;
+  var filled=0,total=36;
+  PAGES.forEach(function(_,i){var v=ST.pages[i]||[];v.forEach(function(x){if((x||'').trim().length>3)filled++})});
+  $('pgbar').style.width=(filled/total*100)+'%';
+  $('pgtxt').textContent=done+'/12 完整 · '+filled+'/36 空已填';
+  Array.prototype.forEach.call($('pglist').children,function(el){
+    el.onclick=function(){curPage=+el.dataset.p;renderPglist();renderPage()};
+  });
+}
+function renderPage(){
+  var p=PAGES[curPage], v=ST.pages[curPage]||['','',''];
+  var cls=p[2]==='P0'?'':(' '+p[2].toLowerCase());
+  var h='<div class="pghd"><h4>'+String(curPage+1).padStart(2,'0')+' '+esc(p[0])+'</h4>'+
+        '<span class="tagpri'+cls+'">'+p[2]+'</span><span class="pgen">'+p[1]+'</span></div>'+
+        '<p class="sec-sub">路演优先级 '+p[2]+'：'+(p[2]==='P0'?'缺了是硬伤，5 分钟版本必留':p[2]==='P1'?'答辩必被追问，8 分钟版本保留':'影响观感，仅 15 分钟版本保留')+'</p>';
+  p[3].forEach(function(q,qi){
+    h+='<div class="qbox"><p class="qt"><i>Q'+(qi+1)+'</i>'+esc(q)+'</p>'+
+       '<textarea rows="3" data-pg="'+curPage+'" data-q="'+qi+'" placeholder="写具体的人、数字、时间。空话会被诊断报告标出来。">'+esc(v[qi]||'')+'</textarea></div>';
+  });
+  h+='<div class="pgnav">'+
+     '<button class="sm"'+(curPage===0?' disabled':'')+' id="pgprev">← 上一页</button>'+
+     '<button class="sm"'+(curPage===11?' disabled':'')+' id="pgnext">下一页 →</button>'+
+     '<button class="sm ghost" id="pgexport">导出十二页（Markdown）</button></div>';
+  $('pgbody').innerHTML=h;
+  Array.prototype.forEach.call($('pgbody').querySelectorAll('textarea'),function(t){
+    t.oninput=function(){
+      var a=ST.pages[+t.dataset.pg]||['','',''];a[+t.dataset.q]=t.value;
+      ST.pages[+t.dataset.pg]=a;save();
+      clearTimeout(t._t);t._t=setTimeout(function(){renderPglist();m3Auto();},420);
+    };
+  });
+  $('pgprev').onclick=function(){if(curPage>0){curPage--;renderPglist();renderPage()}};
+  $('pgnext').onclick=function(){if(curPage<11){curPage++;renderPglist();renderPage()}};
+  $('pgexport').onclick=function(){download('BP十二页_'+stamp()+'.md',mdPages())};
+}
+function mdPages(){
+  var s='# BP 十二页结构 · '+stampf()+'\n\n';
+  PAGES.forEach(function(p,i){
+    var v=ST.pages[i]||['','',''];
+    s+='## '+String(i+1).padStart(2,'0')+' '+p[0]+'（'+p[2]+'）\n';
+    p[3].forEach(function(q,qi){
+      s+='- Q'+(qi+1)+' '+q+'\n  - 答：'+((v[qi]||'').trim()||'（未填写）')+'\n';
+    });
+    s+='\n';
+  });
+  return s;
+}
+
+/* ---------- 02 三十问 ---------- */
+var curDim=0;
+function qid(di,qi){return di+'-'+qi}
+function renderDims(){
+  var h='';
+  DIMS.forEach(function(d,di){
+    var sc=0;
+    d[1].forEach(function(q,qi){var a=(ST.ans[qid(di,qi)]||{});if(a.score===2)sc+=2;else if(a.score===1)sc+=1});
+    h+='<div class="dt'+(di===curDim?' on':'')+'" data-d="'+di+'">'+esc(d[0])+'<span class="sc">'+sc+'/12</span></div>';
+  });
+  $('dimtabs').innerHTML=h;
+  Array.prototype.forEach.call($('dimtabs').children,function(el){
+    el.onclick=function(){curDim=+el.dataset.d;renderDims();renderQlist()};
+  });
+}
+function renderQlist(){
+  var d=DIMS[curDim],h='';
+  d[1].forEach(function(q,qi){
+    var id=qid(curDim,qi),a=ST.ans[id]||{};
+    var bg='';
+    if(a.score===2)bg='<span class="badge pass">过</span>';
+    else if(a.score===1)bg='<span class="badge mid">存疑</span>';
+    else if(a.score===0)bg='<span class="badge fail">未答到点</span>';
+    h+='<div class="qcard"><div class="qtop"><span class="qi">'+String(qi+1).padStart(2,'0')+'</span>'+
+       '<p class="qq">'+esc(q[0])+'</p>'+bg+'</div>'+
+       '<p class="qhint">要点：'+q[1].map(function(k){return '「'+esc(k)+'」'}).join(' ')+'</p>'+
+       '<textarea rows="2" data-q="'+id+'" placeholder="≤120 字，答到要点上，不要答到态度上。">'+esc(a.text||'')+'</textarea>'+
+       '<div style="display:flex;gap:8px;margin-top:7px"><button class="sm primary" data-go="'+id+'">提交，让评委判</button></div>'+
+       (a.fb?'<div class="fb">'+a.fb+'</div>':'')+'</div>';
+  });
+  $('qlist').innerHTML=h;
+  Array.prototype.forEach.call($('qlist').querySelectorAll('textarea'),function(t){
+    t.oninput=function(){var id=t.dataset.q;ST.ans[id]=ST.ans[id]||{};ST.ans[id].text=t.value;save()};
+  });
+  Array.prototype.forEach.call($('qlist').querySelectorAll('button[data-go]'),function(b){
+    b.onclick=function(){judgeQ(b.dataset.go)};
+  });
+}
+function judgeQ(id){
+  var p=id.split('-'),di=+p[0],qi=+p[1];
+  var q=DIMS[di][1][qi],txt=($('qlist').querySelector('textarea[data-q="'+id+'"]').value||'').trim();
+  var hit=q[1].filter(function(k){return txt.indexOf(k)>=0});
+  var score=hit.length>=2?2:(hit.length===1?1:0);
+  var miss=q[1].filter(function(k){return txt.indexOf(k)<0});
+  var fb;
+  if(!txt){fb='<span class="k">空白</span>这题没答。'+
+    '<br><span class="k">追问</span>'+esc(q[2])+
+    '<br><span class="k">动作</span><span class="act">先补一条能核查的事实，再谈表达。</span>';}
+  else{
+    fb='<span class="k">命中</span>'+(hit.length?hit.map(function(k){return '「'+esc(k)+'」'}).join(''):'一个要点都没命中，答的是态度不是事实')+
+       '<br><span class="k">缺口</span>'+(miss.length?miss.map(function(k){return '「'+esc(k)+'」'}).join(''):'无')+
+       '<br><span class="k">追问</span>'+esc(q[2])+
+       '<br><span class="k">动作</span><span class="act">'+
+       (score===2?'把答案里的数字换成带出处的一行，答辩时直接念这一行。':
+        score===1?'补上缺失要点中的一个，写成「因为…所以…」的因果句。':
+        '重写本题：先给一条可核查的事实，再给结论，不要先下结论。')+'</span>';
+  }
+  ST.ans[id]={text:txt,score:score,fb:fb};save();renderDims();renderQlist();m4Auto();
+}
+function weakQ(){
+  var w=[];
+  DIMS.forEach(function(d,di){d[1].forEach(function(q,qi){
+    var a=ST.ans[qid(di,qi)];
+    if(!a||a.score<2)w.push({di:di,qi:qi,q:q[0],probe:q[2],sc:a?a.score:-1});
+  })});
+  return w;
+}
+</script>
+<script>
+/* ---------- 通用 ---------- */
+function stamp(){var d=new Date();return d.getFullYear()+String(d.getMonth()+1).padStart(2,'0')+String(d.getDate()).padStart(2,'0')}
+function stampf(){var d=new Date(),p=function(n){return String(n).padStart(2,'0')};
+  return d.getFullYear()+'-'+p(d.getMonth()+1)+'-'+p(d.getDate())+' '+p(d.getHours())+':'+p(d.getMinutes())}
+function download(name,text){
+  var b=new Blob([text],{type:'text/markdown;charset=utf-8'});
+  var u=URL.createObjectURL(b),a=document.createElement('a');
+  a.href=u;a.download=name;document.body.appendChild(a);a.click();
+  setTimeout(function(){URL.revokeObjectURL(u);a.remove()},1500);
+}
+function decodeText(u8){
+  try{return new TextDecoder('utf-8',{fatal:true}).decode(u8)}catch(e){}
+  try{return new TextDecoder('gbk').decode(u8)}catch(e){}
+  return latin1(u8);
+}
+function latin1(u8){var CH=8192,ps=[];for(var i=0;i<u8.length;i+=CH)
+  ps.push(String.fromCharCode.apply(null,u8.subarray(i,i+CH)));return ps.join('')}
+async function inflateRaw(u8){
+  if(typeof DecompressionStream==='undefined')return null;
+  var fmts=['deflate','deflate-raw'];
+  for(var i=0;i<fmts.length;i++){
+    try{
+      var s=new Blob([u8]).stream().pipeThrough(new DecompressionStream(fmts[i]));
+      return new Uint8Array(await new Response(s).arrayBuffer());
+    }catch(e){}
+  }
+  return null;
+}
+
+/* ============================================================
+   03 路演稿生成与三档裁剪
+   ============================================================ */
+var WPM=240;
+function pageText(i){
+  var v=ST.pages[i]||[];
+  var ps=v.filter(function(x){return (x||'').trim().length>3});
+  return ps.length?ps.join('；')+'。':'';
+}
+function keepIdx(min){
+  var k=[];
+  PAGES.forEach(function(p,i){
+    if(min===15)k.push(i);
+    else if(min===8&&p[2]!=='P2')k.push(i);
+    else if(min===5&&p[2]==='P0')k.push(i);
+  });
+  return k;
+}
+function m3Init(){
+  var h='';
+  [5,8,15].forEach(function(m){
+    h+='<div class="gearc'+(ST.gear===m?' on':'')+'" data-g="'+m+'">'+
+       '<div class="g1"><span class="min">'+m+'<span style="font-size:12px">′</span></span>'+
+       '<span class="rt">'+(m*WPM)+' 字上限</span></div>'+
+       '<div class="gsub">'+(m===5?'只留 P0：硬伤页必讲':m===8?'P0+P1：留出答辩追问':'全部 12 页：完整版陈述')+'</div></div>';
+  });
+  $('gear').innerHTML=h;
+  Array.prototype.forEach.call($('gear').children,function(el){
+    el.onclick=function(){ST.gear=+el.dataset.g;save();m3Init();renderScript()};
+  });
+  renderScript();
+}
+function m3Auto(){if($('scriptbox'))renderScript()}
+function renderScript(){
+  var min=ST.gear,target=min*WPM,keep=keepIdx(min);
+  var segs=[],total=0;
+  keep.forEach(function(i){var t=pageText(i);if(t){segs.push({i:i,t:t,n:cLen(t)});total+=cLen(t)}});
+  var filled=segs.length;
+  var h='<div class="scope">'+
+    '<span class="rt">档位 '+min+' 分钟</span>'+
+    '<span class="wc'+(total>target?' over':'')+'">'+total+' / '+target+' 字</span>'+
+    '<span class="rt">'+(total>target?'超出 '+(total-target)+' 字，按下方顺序砍':'余量 '+(target-total)+' 字')+'</span>'+
+    '<span class="rt">· 建议语速 '+WPM+' 字/分钟</span></div>';
+  if(!filled){
+    h+='<div class="empty">十二页里还没有可念的内容。回 01 模块把 P0 页的三道题填上，稿子会按页自动生成。<br>稿子只搬运你写的事实，不代你补内容。</div>';
+  }else{
+    segs.forEach(function(s){
+      var sec=Math.max(15,Math.round(s.n/WPM*60));
+      h+='<div class="sline"><div class="sk"><b>'+String(s.i+1).padStart(2,'0')+'</b>'+sec+'s</div>'+
+         '<div class="sv">'+esc(s.t)+'</div></div>';
+    });
+  }
+  $('scriptbox').innerHTML=h;
+  var cut=[];
+  PAGES.forEach(function(p,i){if(keep.indexOf(i)<0)cut.push(i)});
+  cut.sort(function(a,b){return cLen(pageText(b))-cLen(pageText(a))});
+  $('m3note').innerHTML= cut.length?
+    ('<b>本档不念（超时时的删除顺序，字数多的先砍）：</b>'+
+      cut.map(function(i){return String(i+1).padStart(2,'0')+' '+PAGES[i][0]+'（'+PAGES[i][2]+'）'}).join(' → ')+
+      '<br><b>留白：</b>'+min+' 分钟版本建议留 '+(min===5?30:min===8?60:120)+' 秒给提问，别把稿子填满。')
+    :'<b>本档保留全部 12 页。</b>15 分钟版本要给财务与风险页留足时间，这两页最容易被评委打断。';
+  setTimer();
+}
+var tmrLeft=0,tmrId=null;
+function setTimer(){tmrLeft=ST.gear*60;paintTmr();stopTmr()}
+function paintTmr(){
+  var m=Math.floor(tmrLeft/60),s=tmrLeft%60;
+  var el=$('tmr');if(!el)return;
+  el.textContent=String(m).padStart(2,'0')+':'+String(s).padStart(2,'0');
+  el.className='tt'+(tmrLeft<=60?' warn':'');
+}
+function stopTmr(){if(tmrId){clearInterval(tmrId);tmrId=null}$('tmrstart').textContent='开始计时'}
+function toggleTmr(){
+  if(tmrId){stopTmr();return}
+  $('tmrstart').textContent='暂停';
+  tmrId=setInterval(function(){
+    tmrLeft--;paintTmr();
+    if(tmrLeft<=0){stopTmr();$('tmrhint').textContent='到点了。超时部分是临场最大的扣分项。'}
+  },1000);
+}
+
+/* ============================================================
+   04 毒舌答辩 · 三轮
+   ============================================================ */
+function renderRounds(){
+  var h='';
+  for(var r=1;r<=3;r++){
+    h+='<div class="rd'+(ST.round===r?' on':(ST.round>r?' done':''))+'"><i>'+r+'</i>'+
+       ['评委提问','评委追问','示范应答 · 你来改写'][r-1]+'</div>';
+    if(r<3)h+='<span class="ln"></span>';
+  }
+  $('rounds').innerHTML=h;
+}
+function fallbackQ(){
+  var min=1e9,mi=1;
+  PAGES.forEach(function(p,i){var n=cLen(pageText(i));if(n<min){min=n;mi=i+1}});
+  return {dim:'通用',
+    text:'你的 BP 十二页里，第 '+String(mi).padStart(2,'0')+' 页「'+PAGES[mi-1][0]+'」只写了 '+min+' 个字。这一页你能站着讲几分钟？',
+    probe:'最薄的那一页，就是评委最先下刀的地方。'};
+}
+function makeQ1(){
+  var w=weakQ();
+  if(!w.length)return fallbackQ();
+  w.sort(function(a,b){return (a.sc<0?-1:a.sc)-(b.sc<0?-1:b.sc)});
+  ST.qidx=(ST.qidx||0)%w.length;
+  var o=w[ST.qidx];
+  return {dim:DIMS[o.di][0],text:o.q,probe:o.probe,idx:o.di+'-'+o.qi};
+}
+function makeQ2(a1){
+  var t=(a1||'').trim();
+  var nums=t.match(/(\d+(?:\.\d+)?)\s*(亿元|万元|万|亿|%|万人|人|家|个|次|台|套)/g);
+  if(nums&&nums.length){
+    return {dim:'追问',text:'你刚才说「'+nums[0]+'」。这个数是谁给的、什么时候、用什么口径统计的？',
+      probe:'从你自己的答案里挑一个数字往回追，追到出处为止。'};
+  }
+  var claims=t.match(/(领先|最好|最快|唯一|解决|实现|验证|已经|成功|大幅|显著|彻底)/g);
+  if(claims&&claims.length){
+    return {dim:'追问',text:'你用了「'+claims[0]+'」。换成可核查的数是多少？不换数，这个词就站不住。',
+      probe:'形容词一出口，评委就只追数字了。'};
+  }
+  return {dim:'追问',text:'你这段一个数字都没有。哪一环可以换成可核查的数？说一个，立刻。',
+    probe:'没有数字的应答，在答辩现场等于没答。'};
+}
+function seg(t,n){t=(t||'').replace(/[\r\n]+/g,'').trim();return t.length>n?t.slice(0,n)+'…':t}
+function demoText(){
+  var a1=(ST.rlog[0]||{}).a||'',a2=(ST.rlog[1]||{}).a||'';
+  if(!a1&&!a2)return '（前两轮没有留下应答。先回去把第 1、2 轮答完，示范句才有对照价值。）';
+  return '【结论】一句话，不铺垫：我们为（谁）把（什么指标）从 A 做到 B，目前进展到（可核查的事实）。\n'+
+   '—— 你们第 1 轮说的是「'+seg(a1,26)+'」。把它压成上面这一句，删掉「老师也说」「效果不错」这类不能核查的部分。\n'+
+   '【证据】来源 + 时间 + 口径 + 样本量。例：20XX 年 X 月，XX 检测机构出具报告（编号 XX），在 XX 张样本上准确率 XX%，对照组 XX%。\n'+
+   '—— 你们第 2 轮说的是「'+seg(a2,26)+'」。缺的是机构名和报告编号，不是态度。\n'+
+   '【边界】这套方案只在（条件）下成立；遇到（反例）时不成立，我们目前做不到的是（缺口）。主动说一句，评委就少追三句。\n'+
+   '【下一步】30 天内做（动作），用（指标）验收，达标才算过。\n'+
+   '—— 四段约 150 字，答辩时 30 秒讲完。示范只是骨架，内容必须换成你们自己的事实。按这个骨架改写。';
+}
+function chkRewrite(t){
+  t=(t||'').trim();var head=t.slice(0,32);
+  return [
+   {k:'结论是否前置',hit:/^(结论|我们|是|答案|一句话|目标)/.test(t)||/(我认为|我们的结论|答案是|结论是|我们要做)/.test(head),
+    d:'开头 15 秒是评委唯一认真听的部分。开头若是背景铺垫，结论就丢了。'},
+   {k:'证据是否带出处',hit:/(来源|据|来自|访谈|问卷|测试|检测|报告|统计|20\d\d年|第三方|份|家|人次)/.test(t),
+    d:'没有出处的证据等于没说。至少补上「谁提供的 + 什么时候 + 什么口径」。'},
+   {k:'是否承认边界',hit:/(不成立|限于|仅|边界|前提|只在|情况下|假设|暂时|目前还|做不到|缺口)/.test(t),
+    d:'不承认边界的答案会被追到底。主动说一句「什么情况下不成立」，反而加分。'},
+   {k:'是否有收口动作',hit:/(下一步|周内|天内|个月内|验收|验证|指标|计划做|打算做|承诺)/.test(t),
+    d:'收口成一句「30 天内做 X，用 Y 验收」，评委就没得追。'}];
+}
+function renderR4(){
+  var h='';
+  if(ST.round===1){
+    var q=ST.q1||(ST.q1=makeQ1());
+    h='<div class="judge"><div class="jl">毒舌评委 · 第 1 轮提问 ['+esc(q.dim)+']</div>'+
+      '<p class="jtext">'+esc(q.text)+'</p>'+
+      '<p class="jtext" style="margin-top:7px;font-size:12.5px;color:#C9C7C2">'+esc(q.probe)+'</p></div>'+
+      '<textarea id="a1" rows="4" placeholder="按事实答：谁、多少、什么时候、怎么知道的。别答态度。"></textarea>'+
+      '<div style="display:flex;gap:8px;margin-top:9px;flex-wrap:wrap">'+
+      '<button class="warn" id="b1">提交第 1 轮应答</button>'+
+      '<button class="ghost sm" id="b1skip">这题我不答了，换一题</button></div>';
+  }else if(ST.round===2){
+    var q2=ST.q2||(ST.q2=makeQ2((ST.rlog[0]||{}).a));
+    h='<div class="judge"><div class="jl">毒舌评委 · 第 1 轮你说过</div>'+
+      '<p class="jtext">'+esc(seg((ST.rlog[0]||{}).a,150)||'（未作答）')+'</p></div>'+
+      '<div class="judge"><div class="jl">毒舌评委 · 第 2 轮追问（盯住你自己的答案）</div>'+
+      '<p class="jtext">'+esc(q2.text)+'</p>'+
+      '<p class="jtext" style="margin-top:7px;font-size:12.5px;color:#C9C7C2">'+esc(q2.probe)+'</p></div>'+
+      '<textarea id="a2" rows="4" placeholder="被追到的是数字。给不出出处，就明说现在还没有，并写下什么时候补齐。"></textarea>'+
+      '<div style="display:flex;gap:8px;margin-top:9px">'+
+      '<button class="warn" id="b2">提交第 2 轮应答</button>'+
+      '<button class="ghost sm" id="b2back">返回修改第 1 轮</button></div>';
+  }else{
+    var d=chkRewrite(ST.demoSelf);
+    h='<div class="judge"><div class="jl">毒舌评委 · 第 3 轮：先给示范，你再改写</div>'+
+      '<p class="jtext" style="font-size:13px;line-height:1.9">前两轮问完了。这一轮我不问，先给一段示范应答，你们按同一结构改写自己的版本。<em>改完我会逐项对照，只指出缺了什么。</em></p></div>'+
+      '<div class="demo"><div class="dl">示范应答 · 结论 / 证据 / 边界 / 下一步</div>'+
+      '<div class="dtxt">'+esc(demoText())+'</div></div>'+
+      '<textarea id="a3" rows="5" placeholder="按【结论】【证据】【边界】【下一步】四段改写你们的版本，≤200 字。">'+esc(ST.demoSelf||'')+'</textarea>'+
+      '<div style="display:flex;gap:8px;margin-top:9px;flex-wrap:wrap">'+
+      '<button class="warn" id="b3">提交改写版，逐项对照</button>'+
+      '<button class="ghost sm" id="b3exp">导出三轮应答记录</button>'+
+      '<button class="ghost sm" id="b3reset">重新开始三轮</button></div>'+
+      (ST.demoSelf?'<div class="diff">'+d.map(function(c){
+        return '<div class="dif'+(c.hit?' hit':'')+'"><div class="dk">'+c.k+' <span class="dm">'+(c.hit?'✓ 有':'✕ 缺')+'</span></div><div class="ds">'+esc(c.d)+'</div></div>'}).join('')+'</div>':'')+
+      (ST.demoSelf?'<div class="fb" style="margin-top:11px"><span class="k">对照</span>'+
+        '命中 '+d.filter(function(c){return c.hit}).length+'/4。'+
+        '<br><span class="k">动作</span><span class="act">把缺失的那一项单独重写一遍，其余三段不动，再提交一次。</span></div>':'');
+  }
+  $('r4stage').innerHTML=h;
+  if(ST.round===1){
+    $('b1').onclick=function(){
+      var v=$('a1').value.trim();
+      if(!v){$('a1').placeholder='空着交上来，评委只会更不满意。写一句也行。';return}
+      ST.rlog[0]={r:1,q:'['+ST.q1.dim+'] '+ST.q1.text,a:v};ST.q2=null;ST.round=2;save();
+      renderRounds();renderR4();renderLog();
+    };
+    $('b1skip').onclick=function(){ST.qidx=(ST.qidx||0)+1;ST.q1=makeQ1();save();renderR4()};
+  }else if(ST.round===2){
+    $('b2').onclick=function(){
+      var v=$('a2').value.trim();
+      if(!v){$('a2').placeholder='被追问时不答，等于承认上一轮是编的。写下出处或写下「暂无 + 补齐时间」。';return}
+      ST.rlog[1]={r:2,q:ST.q2.text,a:v};ST.round=3;save();
+      renderRounds();renderR4();renderLog();
+    };
+    $('b2back').onclick=function(){ST.round=1;save();renderRounds();renderR4()};
+  }else{
+    if($('b3'))$('b3').onclick=function(){
+      var v=$('a3').value.trim();
+      if(!v){$('a3').placeholder='示范都摆在前面了，照结构写四段，再提交。';return}
+      ST.demoSelf=v;save();renderR4();renderLog();
+    };
+    if($('b3exp'))$('b3exp').onclick=function(){download('三轮应答记录_'+stamp()+'.md',mdRounds())};
+    if($('b3reset'))$('b3reset').onclick=function(){
+      ST.round=1;ST.rlog=[];ST.q1=null;ST.q2=null;ST.demoSelf='';save();
+      renderRounds();renderR4();renderLog();
+    };
+  }
+}
+function renderLog(){
+  var h='<div style="font-size:12px;color:var(--dim);margin-bottom:6px">应答留痕：</div>';
+  if(!ST.rlog.length&&!ST.demoSelf){h+='<div class="al" style="color:var(--dim2)"><span class="r">—</span>三轮应答会记在这里，供指导老师复盘。</div>';}
+  else{
+    (ST.rlog||[]).forEach(function(l){
+      h+='<div class="al"><span class="r">第'+l.r+'轮</span><span>问：'+esc(seg(l.q,60))+'<br>答：'+esc(seg(l.a,90)||'（未作答）')+'</span></div>';
+    });
+    if(ST.demoSelf)h+='<div class="al"><span class="r">第3轮</span><span>改写版：'+esc(seg(ST.demoSelf,110))+'</span></div>';
+  }
+  $('anslog').innerHTML=h;
+}
+function mdRounds(){
+  var s='# 毒舌答辩三轮记录 · '+stampf()+'\n\n';
+  (ST.rlog||[]).forEach(function(l){s+='## 第 '+l.r+' 轮\n- 评委问：'+l.q+'\n- 团队答：'+(l.a||'（未作答）')+'\n\n'});
+  if(ST.demoSelf){
+    s+='## 第 3 轮 · 团队改写版\n'+ST.demoSelf+'\n\n';
+    chkRewrite(ST.demoSelf).forEach(function(c){s+='- '+c.k+'：'+(c.hit?'有':'缺')+' — '+c.d+'\n'});
+  }
+  s+='\n> 记录仅用于复盘。三轮问完不产出评分，也不预测比赛结果。\n';
+  return s;
+}
+
+/* ============================================================
+   05 文件解析
+   ============================================================ */
+function pad4(s){s=String(s).toUpperCase();while(s.length<4)s='0'+s;return s}
+function hexToStr(h){var o='';for(var i=0;i+4<=h.length;i+=4)o+=String.fromCharCode(parseInt(h.substr(i,4),16));return o}
+function parseCmap(s){
+  var map={};
+  s.split(/endbfchar|endbfrange/).forEach(function(b){
+    var i=b.lastIndexOf('beginbfrange'),isR=i>=0;
+    if(i<0)i=b.lastIndexOf('beginbfchar');
+    if(i<0)return;
+    var body=b.slice(i),hexes=[],re=/<([0-9A-Fa-f]+)>/g,m;
+    while((m=re.exec(body)))hexes.push(m[1]);
+    if(isR){
+      for(var k=0;k+2<hexes.length;k+=3){
+        var lo=parseInt(hexes[k],16),hi=parseInt(hexes[k+1],16),d=hexToStr(hexes[k+2]);
+        if(!d)continue;
+        for(var c=lo;c<=hi&&c-lo<65535;c++)map[pad4(c.toString(16))]=String.fromCharCode(d.charCodeAt(0)+(c-lo));
+      }
+    }else{
+      for(var k=0;k+1<hexes.length;k+=2)map[pad4(parseInt(hexes[k],16).toString(16))]=hexToStr(hexes[k+1]);
+    }
+  });
+  return map;
+}
+function decodeLit(s){
+  return s.replace(/\\([nrtbf()\\])/g,function(_,c){
+    return {n:'\n',r:'\r',t:'\t',b:'',f:'','(':'(',')':')','\\':'\\'}[c]||c;
+  }).replace(/\\([0-7]{1,3})/g,function(_,o){return String.fromCharCode(parseInt(o,8))});
+}
+function hexToText(h,cmap){
+  h=h.replace(/[^0-9A-Fa-f]/g,'');
+  var out='';
+  if(cmap&&Object.keys(cmap).length){
+    for(var i=0;i+3<h.length;i+=4){var c=cmap[h.substr(i,4).toUpperCase()];if(c)out+=c}
+  }
+  if(!out){for(var i=0;i+3<h.length;i+=4)out+=String.fromCharCode(parseInt(h.substr(i,4),16))}
+  if(!out){for(var i=0;i+1<h.length;i+=2)out+=String.fromCharCode(parseInt(h.substr(i,2),16))}
+  return out;
+}
+function extractContent(str,cmap){
+  var out=[],re=/\(((?:\\.|[^()\\])*)\)\s*Tj|\[([^\]]*)\]\s*TJ|<([0-9A-Fa-f\s]+)>\s*Tj/g,m;
+  while((m=re.exec(str))){
+    if(m[1]!=null)out.push(decodeLit(m[1]));
+    else if(m[2]!=null){
+      var re2=/\(((?:\\.|[^()\\])*)\)/g,m2;
+      while((m2=re2.exec(m[2])))out.push(decodeLit(m2[1]));
+    }
+    else if(m[3]!=null)out.push(hexToText(m[3],cmap));
+  }
+  return out;
+}
+async function pdfToText(u8){
+  var S=latin1(u8),streams=[],re=/\bstream\b/g,m;
+  while((m=re.exec(S))){
+    var a=m.index+6,b=S.indexOf('endstream',a);
+    if(b<0)continue;
+    var s0=a;if(S.charCodeAt(s0)===13)s0++;if(S.charCodeAt(s0)===10)s0++;
+    var e0=b;while(e0>s0&&(S.charCodeAt(e0-1)===10||S.charCodeAt(e0-1)===13))e0--;
+    if(e0>s0)streams.push(u8.subarray(s0,e0));
+    re.lastIndex=b+9;
+  }
+  var cmap={},chunks=[];
+  for(var i=0;i<streams.length;i++){
+    var d=await inflateRaw(streams[i]);
+    var t=d?latin1(d):latin1(streams[i]);
+    if(t.indexOf('beginbfchar')>=0||t.indexOf('beginbfrange')>=0){
+      var c=parseCmap(t);for(var k in c)cmap[k]=c[k];
+    }
+    if(t.indexOf('BT')>=0)chunks.push(t);
+  }
+  var out=[];
+  chunks.forEach(function(t){
+    var ls=extractContent(t,cmap).filter(function(x){return x.length});
+    if(ls.length)out.push(ls.join(''));
+  });
+  return out.join('\n');
+}
+function zipRead(u8){
+  var dv=new DataView(u8.buffer,u8.byteOffset,u8.byteLength),eocd=-1;
+  for(var i=u8.length-22;i>=0&&i>u8.length-66000;i--){if(dv.getUint32(i,true)===0x06054b50){eocd=i;break}}
+  if(eocd<0)throw new Error('这个文件不是有效的 pptx');
+  var n=dv.getUint16(eocd+10,true),p=dv.getUint32(eocd+16,true),out={};
+  for(var k=0;k<n;k++){
+    if(dv.getUint32(p,true)!==0x02014b50)break;
+    var method=dv.getUint16(p+10,true),csize=dv.getUint32(p+20,true);
+    var nlen=dv.getUint16(p+28,true),elen=dv.getUint16(p+30,true),clen=dv.getUint16(p+32,true);
+    var lho=dv.getUint32(p+42,true);
+    var name=latin1(u8.subarray(p+46,p+46+nlen));
+    var lnlen=dv.getUint16(lho+26,true),lelen=dv.getUint16(lho+28,true);
+    var ds=lho+30+lnlen+lelen;
+    out[name]={data:u8.subarray(ds,ds+csize),method:method};
+    p=p+46+nlen+elen+clen;
+  }
+  return out;
+}
+async function pptxToText(u8){
+  var files=zipRead(u8),names=Object.keys(files).filter(function(n){return /^ppt\/slides\/slide\d+\.xml$/.test(n)});
+  names.sort(function(a,b){
+    return (parseInt(a.replace(/\D/g,''),10)||0)-(parseInt(b.replace(/\D/g,''),10)||0)});
+  var out=[];
+  for(var i=0;i<names.length;i++){
+    var f=files[names[i]],xml;
+    if(f.method===8){var d=await inflateRaw(f.data);xml=decodeText(d||f.data)}
+    else xml=decodeText(f.data);
+    var ts=[],re=/<a:t>([\s\S]*?)<\/a:t>/g,m;
+    while((m=re.exec(xml)))ts.push(m[1].replace(/&amp;/g,'&').replace(/&lt;/g,'<').replace(/&gt;/g,'>'));
+    if(ts.length)out.push('【第'+(i+1)+'页】'+ts.join(' '));
+  }
+  return out.join('\n');
+}
+
+/* ============================================================
+   05 诊断引擎
+   ============================================================ */
+var POSDIM={
+ '技术可行性':['成熟度','样机','验证','测试','专利','中试','良率','检测','第三方','对比','实验','技术路线','试产','指标'],
+ '市场规模测算':['TAM','SAM','SOM','客单价','渗透率','复购','自下而上','自上而下','市场规模','访谈','问卷','测算','口径','频次'],
+ '商业模式':['付费方','客单价','毛利','定价','获客','订阅','成本','收入','收费','盈利','复购率','谁付钱','客户'],
+ '团队结构':['分工','负责人','职责','股权','全职','投入','导师','每周','股权比例'],
+ '社会价值':['受益','人数','就业','增收','减排','可持续','公益','帮扶','覆盖','社会效益','工时','节本']
+};
+var DIMN=['技术可行性','市场规模测算','商业模式','团队结构','社会价值'];
+function cnRatio(t){var m=t.match(/[\u4e00-\u9fa5]/g);return t.length?(m?m.length/t.length:0):0}
+function quoteAt(t,idx,len){
+  if(len>18)len=18;
+  var s=Math.max(0,idx-5),e=Math.min(t.length,idx+len+6);
+  var q=t.slice(s,e).replace(/\s+/g,'');
+  return '「'+(s>0?'…':'')+q+(e<t.length?'…':'')+'」';
+}
+function missRule(dim,sev,name,keys,act,rec,t){
+  var hit=keys.filter(function(k){return t.indexOf(k)>=0});
+  if(hit.length)return null;
+  return {dim:dim,sev:sev,name:name,
+    ev:'全文未出现「'+keys.slice(0,3).join('」「')+'」等任一表述',act:act,rec:rec};
+}
+function scan(t,re,fn){
+  re.lastIndex=0;
+  var m,c=0,first='',guard=0;
+  while((m=re.exec(t))&&guard++<400){
+    if(fn&&!fn(m[0]))continue;
+    c++;if(!first)first=quoteAt(t,m.index,m[0].length);
+  }
+  return {c:c,ev:c>1?first+' 等 '+c+' 处':first};
+}
+function hitRule(dim,sev,name,re,act,rec,t){
+  var r=scan(t,re,null);
+  if(!r.c)return null;
+  return {dim:dim,sev:sev,name:name,ev:r.ev,act:act,rec:rec};
+}
+function condRule(dim,sev,name,re,act,rec,t,fn){
+  var r=scan(t,re,fn);
+  if(!r.c)return null;
+  return {dim:dim,sev:sev,name:name,ev:r.ev,act:act,rec:rec};
+}
+function diagnose(t,som){
+  var risks=[];
+  var push=function(r){if(r)risks.push(r)};
+  /* ---- P0 阻断级 ---- */
+  push(condRule('市场规模测算',0,'有数字，没说清它是什么数',
+    /[^。；\n]*\d+(?:\.\d+)?\s*(?:亿元|万元|万亿|亿美元|万美元|亿)[^。；\n]*/g,
+    '在这个数字后面补一行括号，写清它是测算值、实测值还是目标值，并写明依据。说不清性质就删掉。',
+    '再评估：全文每个市场/收入数字后都能说明性质（测算 / 实测 / 目标）并给出依据。',t,
+    function(s){return !/(来源|据|来自|统计|报告|问卷|访谈|测算|假设|出自|引自|实测|自测|目标值|开票|到款|含税|不含税|账面)/.test(s)}));
+  push(hitRule('市场规模测算',0,'引了权威，没引名字',
+    /(据统计|研究表明|数据显示|相关报告|有报告显示|权威|据.{0,6}报告)/g,
+    '把「据统计」换成具体报告名 + 发布方 + 年份；换不出来就把这句删掉。',
+    '再评估：不再出现无主语的「据统计 / 研究表明」。',t));
+  push(missRule('市场规模测算',0,'市场测算没有自算路径',
+    ['TAM','SAM','SOM','客单价','渗透率','自下而上','自上而下'],
+    '按自下而上重算：可触达用户数 × 渗透率 × 客单价 × 年频次，四个数写在 BP 上，各自注明来源。',
+    '再评估：BP 中出现完整测算式，且四个参数均有来源标注。',t));
+  push(missRule('商业模式',0,'说不清谁付钱、一单赚多少',
+    ['付费方','客单价','毛利','定价','收费','盈利','谁付钱'],
+    '补两行：付费方是（角色），一单收（金额），成本（金额），毛利（%）。写不出毛利，就先去问三个真实客户。',
+    '再评估：付费方、客单价、毛利率三项在 BP 中可直接找到数字。',t));
+  push(missRule('技术可行性',0,'技术成熟度没有证据',
+    ['成熟度','样机','验证','测试','专利','中试','检测','第三方','对比实验'],
+    '补一条硬证据：第三方检测报告编号、样机照片与测试条件、或专利号。三样都没有，就去约一次测试。',
+    '再评估：技术页至少一条可核查证据，含测试条件与对照组。',t));
+  /* ---- P1 重要级 ---- */
+  push(hitRule('技术可行性',1,'技术优势写成形容词',
+    /(世界领先|国际领先|国内领先|行业领先|技术领先|首创|独一无二|颠覆|革命性|自主可控|彻底改变|填补空白)/g,
+    '逐个换成对照句：「在（对照组）下，我们的（指标）从 A 变成 B」。没有对照组，就先做一次对照测试。',
+    '再评估：技术页不含排名式形容，全部替换为指标 + 对照。',t));
+  push(hitRule('市场规模测算',1,'市场形容代替市场测算',
+    /(市场巨大|巨大的?市场|前景广阔|市场广阔|空间巨大|千亿|万亿|爆发式|指数级|海量用户|高速增长)/g,
+    '删掉，原位换成测算式与参数来源。市场大小只能由四个参数算出来，不能由形容词说出来。',
+    '再评估：市场页无规模形容，出现可复算的测算式。',t));
+  push(hitRule('商业模式',1,'价值描述写成形容词',
+    /(极大提升|显著提升|大幅提升|广受好评|深受好评|高度认可|完美解决|用户体验极佳|功能强大|效果显著|明显优势)/g,
+    '换成量化收益：为（谁）把（指标）从 A 降到 B，或把（工时/成本）省下 C。',
+    '再评估：价值描述均带前后对比数字。',t));
+  push(condRule('商业模式',1,'商业模式只有模式，没有金额',
+    /[^。；\n]*(商业模式|盈利|变现|收费|营收)[^。；\n]*/g,
+    '补三个数：客单价、单客成本、毛利。再补一句谁付钱、多久付一次。',
+    '再评估：商业模式页三个金额齐全，且写明付费方与账期。',t,
+    function(s){return !/\d/.test(s)}));
+  push(missRule('商业模式',1,'落地进展没有真实数据',
+    ['付费用户','合同','订单','意向','试点','复购','上线','客户数'],
+    '补三个数据点：付费用户数、合同金额、近 6 个月关键指标。都没有就写「目前 0 个付费用户，计划 X 月前拿到第一个」。',
+    '再评估：进展页至少三个带日期的数字，或明确写出「当前为 0」及补齐时间。',t));
+  push(condRule('团队结构',1,'团队描述是评价，不是分工',
+    /[^。；\n]*(团队|成员|专业背景|指导老师)[^。；\n]*/g,
+    '改成表格：姓名 / 专业 / 负责什么 / 每周投入小时 / 可核查成果。删掉「结构合理」「执行力强」。',
+    '再评估：团队页为表格，四列齐全，无评价性形容。',t,
+    function(s){return !/(分工|负责|每周|小时|股权|投入)/.test(s)}));
+  push(missRule('团队结构',1,'团队分工没写清',
+    ['分工','负责人','职责','股权','全职','投入'],
+    '补一张分工表：谁对技术负责、谁对收入负责、分歧时谁拍板。全员都是负责人等于没人负责。',
+    '再评估：分工表列出每人的单一责任与决策人。',t));
+  push(condRule('社会价值',1,'社会价值只有口号，没有数字',
+    /[^。；\n]*(受益|带动就业|增收|减排|帮扶|乡村振兴|社会效益)[^。；\n]*/g,
+    '补一条：受益人数 / 就业人数 / 节本金额 + 统计口径 + 来源。三者缺一，评委当没看见。',
+    '再评估：社会价值页每项都有数字，且标注口径与来源。',t,
+    function(s){return !/\d/.test(s)}));
+  push(missRule('社会价值',1,'社会价值没有量化项',
+    ['受益','人数','就业','增收','减排','可持续','帮扶','工时','节本'],
+    '选一项做实：受益人数（口径 + 来源）、带动就业人数、或单位节本金额，写出数字与统计方式。',
+    '再评估：社会价值页至少一项有数字、口径与来源。',t));
+  /* ---- P2 提示级 ---- */
+  push(hitRule('通用表达',2,'绝对化断言',
+    /(必将|必然会|一定能|毫无疑问|我们坚信|绝对|100%|无一例外|永远)/g,
+    '改成条件句：「在（条件）下，我们有（数据）支撑的把握」。',
+    '再评估：无绝对化表述，全部改为条件 + 数据。',t));
+  push(hitRule('通用表达',2,'空话占位',
+    /(致力于|打造一流|赋能|助力|生态闭环|全方位|一站式|深度融合|保驾护航|开创未来)/g,
+    '删掉，换成一句「我们为（谁）把（什么）从（A）变成（B）」。',
+    '再评估：开篇 100 字内无口号式表述。',t));
+  push(missRule('通用表达',2,'没有可验收的里程碑',
+    ['里程碑','季度','时间表','验收','节点','Q1','Q2','Q3','Q4'],
+    '补一张表：未来 4 个季度各交付什么，验收标准是什么，谁负责。',
+    '再评估：出现四季度里程碑表，且每项有验收标准。',t));
+  /* ---- 自算 SOM 与 BP 声称对撞 ---- */
+  if(som&&som>0){
+    var reM=/(\d+(?:\.\d+)?)\s*(万亿元|亿元|万元)/g,mM,claimed=0;
+    while((mM=reM.exec(t))){var vv=parseFloat(mM[1])*(mM[2]==='万元'?1e4:1e8);if(vv>claimed)claimed=vv}
+    if(claimed>0){
+      var ratio=claimed/som;
+      if(ratio>3||ratio<1/3){
+        push({dim:'市场规模测算',sev:0,name:'BP 声称口径与自算 SOM 对不上',
+          ev:'BP 最大金额口径 '+(claimed/1e8).toFixed(4)+' 亿元 vs 按你的参数算出的 SOM '+(som/1e8).toFixed(4)+' 亿元（相差约 '+(ratio>1?ratio.toFixed(1):(1/ratio).toFixed(1))+' 倍）',
+          act:'二选一：改 BP 的口径，或改你的参数假设。两边都要写清依据，不许留两套数字。',
+          rec:'再评估：BP 中所有金额与自算 SOM 偏差在 3 倍以内，且口径一致。'});
+      }
+    }
+  }
+  risks.sort(function(a,b){return a.sev-b.sev});
+  if(risks.length>10){
+    var out=[],seen={};
+    risks.forEach(function(r){if(!seen[r.dim]&&out.length<10){seen[r.dim]=1;out.push(r)}});
+    risks.forEach(function(r){if(out.length<10&&out.indexOf(r)<0)out.push(r)});
+    out.sort(function(a,b){return a.sev-b.sev});
+    risks=out;
+  }
+  return risks;
+}
+function dimScore(dim,risks,t){
+  var hits=POSDIM[dim].filter(function(k){return t.indexOf(k)>=0}).length;
+  var s=1;if(hits>=1)s=2;if(hits>=3)s=3;if(hits>=5)s=4;if(hits>=7)s=5;
+  var p0=risks.filter(function(r){return r.dim===dim&&r.sev===0}).length;
+  var p1=risks.filter(function(r){return r.dim===dim&&r.sev===1}).length;
+  s=s-p0*1-p1*0.5;
+  return Math.max(1,Math.min(5,Math.round(s)));
+}
+
+function scoreBS(n){
+  var h='<span class="score">';
+  for(var i=1;i<=5;i++)h+='<s class="'+(i<=n?(n>=4?'f3':'f'):'')+'"></s>';
+  return h+'</span>';
+}
+var SEVN=['P0 阻断','P1 重要','P2 提示'],SEVC=['p0','p1','p2'];
+function renderReport(text,meta){
+  var som=ST.som||0;
+  var risks=diagnose(text,som);
+  var m=text.match(/[\u4e00-\u9fa5]/g);
+  var h='<div class="rep"><div class="rephd">'+
+    '<span class="r1">诊断报告清单</span>'+
+    '<span class="r2">'+esc(meta.src)+' · '+(m?m.length:0)+' 字 · 用时 '+meta.sec+'s / 承诺 ≤300s</span>'+
+    '<span class="sp"></span>'+
+    '<button class="sm" id="bexp">导出报告（Markdown）</button></div>';
+  h+='<div style="padding:14px 17px;background:var(--warnS);border-bottom:1px solid var(--line);font-size:12.5px;color:var(--ink2);line-height:1.8">'+
+    '<b>本份报告只做逻辑校验。</b>不评分排名、不预测获奖概率、不引用任何行业报告替你补数据。'+
+    (meta.warn?'<br><b style="color:var(--warn2)">识别提示：</b>'+esc(meta.warn):'')+'</div>';
+  /* 五维度表 */
+  h+='<table class="reptb"><thead><tr><th>评审维度</th><th>评分 1–5</th><th>风险项</th><th>证据（BP 原文）</th><th>补救动作</th><th>再评估标准</th></tr></thead><tbody>';
+  DIMN.forEach(function(d){
+    var rs=risks.filter(function(r){return r.dim===d});
+    var sc=dimScore(d,risks,text);
+    h+='<tr><td class="dim">'+d+'</td>'+
+       '<td>'+scoreBS(sc)+' <span class="mono" style="font-size:11px;color:var(--dim)">'+sc+'/5</span></td>'+
+       '<td>'+(rs.length?rs.map(function(r){return esc(r.name)}).join('<br>'):'本轮未检出')+'</td>'+
+       '<td class="ev">'+(rs.length?esc(rs[0].ev):'—')+'</td>'+
+       '<td class="act">'+(rs.length?esc(rs[0].act):'保持：把现有证据的出处逐条标上')+'</td>'+
+       '<td class="rec">'+(rs.length?esc(rs[0].rec):'再评估：新增内容仍须满足「有数字 + 有出处」')+'</td></tr>';
+  });
+  var grs=risks.filter(function(r){return r.dim==='通用表达'});
+  if(grs.length){
+    h+='<tr style="background:var(--bg2)"><td class="dim">跨维度表达<br><span class="rt">不计入五维评分</span></td>'+
+       '<td><span class="mono" style="font-size:11px;color:var(--dim)">—</span></td>'+
+       '<td>'+grs.map(function(r){return esc(r.name)}).join('<br>')+'</td>'+
+       '<td class="ev">'+esc(grs[0].ev)+'</td>'+
+       '<td class="act">'+esc(grs[0].act)+'</td>'+
+       '<td class="rec">'+esc(grs[0].rec)+'</td></tr>';
+  }
+  h+='</tbody></table>';
+  /* 风险清单 */
+  h+='<div class="rlist"><div style="padding:10px 17px 2px;font-size:12.5px;color:var(--dim)">风险清单 · '+risks.length+' 条（上限 10 条，已按严重度排序）</div>';
+  if(!risks.length){
+    h+='<div class="empty">没有检出风险。若 BP 全文确实很短，先确认解析到的字数是否够——短文本容易漏检。</div>';
+  }else{
+    risks.forEach(function(r,i){
+      h+='<div class="ri"><div class="rhd"><span class="sev '+SEVC[r.sev]+'">'+SEVN[r.sev]+'</span>'+
+         '<span class="rname">'+String(i+1).padStart(2,'0')+' '+esc(r.name)+'</span>'+
+         '<span class="rdim">'+esc(r.dim)+'</span></div>'+
+         '<div class="rkv">'+
+         '<div class="k">证据</div><div class="v ev">'+esc(r.ev)+'</div>'+
+         '<div class="k">补救动作</div><div class="v act">'+esc(r.act)+'</div>'+
+         '<div class="k">再评估</div><div class="v rec">'+esc(r.rec)+'</div>'+
+         '</div></div>';
+    });
+  }
+  h+='</div>';
+  h+='<div style="padding:11px 17px;border-top:1px solid var(--line);font-size:12px;color:var(--dim)">'+
+     '改完任意一条后，重新上传一次 BP，看这条是否从清单里消失——这是唯一有效的验收方式。</div></div>';
+  $('reportzone').innerHTML=h;
+  var be=$('bexp');if(be)be.onclick=function(){download('BP诊断报告_'+stamp()+'.md',mdReport(text,risks,meta))};
+}
+function mdReport(text,risks,meta){
+  var s='# BP 诊断报告清单\n\n'+stampf()+' · 来源 '+meta.src+' · 用时 '+meta.sec+'s（承诺 ≤300s）\n\n'+
+    '> 本份报告只做逻辑校验，不评分排名、不预测获奖概率、不引用行业报告替你补数据。\n\n';
+  s+='## 一、五维度评审（每维度 6 字段）\n\n';
+  DIMN.forEach(function(d){
+    var rs=risks.filter(function(r){return r.dim===d}),sc=dimScore(d,risks,text);
+    s+='### '+d+'　评分 '+sc+'/5\n';
+    s+='- 评审维度：'+d+'\n';
+    s+='- 评分：'+sc+'/5\n';
+    s+='- 风险项：'+(rs.length?rs.map(function(r){return r.name}).join('；'):'本轮未检出')+'\n';
+    s+='- 证据：'+(rs.length?rs[0].ev:'—')+'\n';
+    s+='- 补救动作：'+(rs.length?rs[0].act:'保持：把现有证据的出处逐条标上')+'\n';
+    s+='- 再评估标准：'+(rs.length?rs[0].rec:'新增内容仍须满足「有数字 + 有出处」')+'\n\n';
+  });
+  var grs=risks.filter(function(r){return r.dim==='通用表达'});
+  if(grs.length){
+    s+='### 跨维度表达（不计入五维评分）\n';
+    s+='- 评审维度：跨维度表达\n- 评分：不评分\n';
+    s+='- 风险项：'+grs.map(function(r){return r.name}).join('；')+'\n';
+    s+='- 证据：'+grs[0].ev+'\n- 补救动作：'+grs[0].act+'\n- 再评估标准：'+grs[0].rec+'\n\n';
+  }
+  s+='## 二、风险清单（'+risks.length+' 条，按严重度排序）\n\n';
+  risks.forEach(function(r,i){
+    s+=(i+1)+'. ['+SEVN[r.sev]+'] '+r.name+'（'+r.dim+'）\n'+
+       '   - 证据：'+r.ev+'\n   - 补救动作：'+r.act+'\n   - 再评估标准：'+r.rec+'\n';
+  });
+  s+='\n## 三、市场规模自算\n\n';
+  if(ST.som)s+='- 你的参数结果 SOM：'+(ST.som/1e8).toFixed(4)+' 亿元\n';
+  else s+='- 未填入参数，本工具未给出任何市场数字。\n';
+  s+='\n> 改完任一条后重新上传 BP，看该条是否从清单消失——这是唯一有效的验收方式。\n';
+  return s;
+}
+
+/* ---------- 05 交互 ---------- */
+var BP_TEXT='',BP_SRC='';
+function init05(){
+  var dz=$('drop');
+  dz.onclick=function(){$('file').click()};
+  dz.ondragover=function(e){e.preventDefault();dz.classList.add('over')};
+  dz.ondragleave=function(){dz.classList.remove('over')};
+  dz.ondrop=function(e){e.preventDefault();dz.classList.remove('over');if(e.dataTransfer.files[0])doFile(e.dataTransfer.files[0])};
+  $('file').onchange=function(){if(this.files[0])doFile(this.files[0])};
+  $('btnclear').onclick=function(){$('pastetxt').value='';BP_TEXT='';BP_SRC='';$('reportzone').innerHTML='';$('parsetip').textContent='';$('finfo').innerHTML='已清空。'};
+  $('btnparse').onclick=function(){
+    var v=$('pastetxt').value.trim();
+    if(!v&&!BP_TEXT){$('parsetip').textContent='先粘贴正文或上传文件';return}
+    runDiag(v||BP_TEXT,BP_SRC||'粘贴文本');
+  };
+  $('btncalc').onclick=function(){
+    var u=parseFloat($('p_users').value),pr=parseFloat($('p_price').value),
+        f=parseFloat($('p_freq').value),pe=parseFloat($('p_pene').value);
+    var box=$('calcout');
+    if(!(u>0&&pr>0&&f>0&&pe>0)||pe>100){
+      box.className='calcout wait';
+      box.innerHTML='四个参数留空任意一个，或渗透率不在 0–100 之间，这里就保持空白。<br>本工具不设默认值，也不引用任何行业报告——市场数字只能由你给。';
+      ST.som=0;save();return;
+    }
+    var som=u*(pe/100)*pr*f;
+    ST.som=som;save();
+    box.className='calcout ready';
+    box.innerHTML='SOM（3 年可获取市场规模）≈ <span class="big">'+(som/1e8).toFixed(4)+' 亿元</span><br>'+
+      '<span style="font-family:inherit;font-size:12px">= '+u.toLocaleString()+' 人 × '+pe+'% × '+pr+' 元/次 × '+f+' 次/年</span>'+
+      '<br><span style="font-family:inherit;font-size:12px;color:var(--warn2)">口径：这是你自己假设的结果，答辩时评委问的就是这四个数各自的来源。</span>';
+  };
+  $('btnclrcalc').onclick=function(){
+    ['p_users','p_price','p_freq','p_pene'].forEach(function(id){$(id).value=''});
+    ST.som=0;save();
+    $('calcout').className='calcout wait';
+    $('calcout').innerHTML='四个参数留空任意一个，这里就保持空白。本工具不会替你假设渗透率，也不会引用任何行业报告给数字。';
+  };
+  $('btndemo').onclick=function(){
+    $('pastetxt').value=DEMO_BP;BP_TEXT=DEMO_BP;BP_SRC='示例空泛 BP';
+    $('finfo').innerHTML='已载入<b>刻意写得空泛的示例 BP</b>，用于演示诊断会命中哪些风险。这段文本里的所有数字都是占位，不是真实市场数据——不要拿它当素材。';
+  };
+}
+function doFile(f){
+  var ext=(f.name.split('.').pop()||'').toLowerCase();
+  $('finfo').innerHTML='正在解析：<b>'+esc(f.name)+'</b>（'+(f.size/1048576).toFixed(2)+' MB）…';
+  var fr=new FileReader();
+  fr.onload=async function(){
+    var t0=Date.now();
+    try{
+      var u8=new Uint8Array(fr.result),txt='';
+      if(ext==='pdf')txt=await pdfToText(u8);
+      else if(ext==='pptx')txt=await pptxToText(u8);
+      else if(ext==='txt'||ext==='md'||ext==='markdown')txt=decodeText(u8);
+      else{throw new Error('不支持 .'+ext+'（老版 .ppt 请另存为 .pptx）')}
+      txt=(txt||'').replace(/\r/g,'').replace(/\n{3,}/g,'\n\n').trim();
+      var sec=((Date.now()-t0)/1000).toFixed(1);
+      if(cLen(txt)<40){
+        $('finfo').innerHTML='<b style="color:var(--warn2)">这个文件没能提取出文字。</b>可能是扫描件图片版 PDF、纯图片 PPT，或文字被转成了曲线。'+
+          '<br>处理办法：把 BP 正文直接粘到右侧文本框，再点解析。粘贴的内容与文件解析走同一套诊断规则。';
+        return;
+      }
+      var warn='';
+      if(cnRatio(txt)<0.12&&cLen(txt)>200)warn='提取到的中文占比偏低，可能存在扫描页或编码异常，建议把关键段落粘到右侧文本框补充后再诊断。';
+      BP_TEXT=txt;BP_SRC=f.name;
+      $('finfo').innerHTML='已解析：<b>'+esc(f.name)+'</b> · 提取 '+cLen(txt)+' 字 · 用时 '+sec+'s'+(warn?' · '+warn:'');
+      $('pastetxt').value=txt.slice(0,4000);
+      runDiag(txt,f.name,warn);
+    }catch(e){
+      $('finfo').innerHTML='<b style="color:var(--warn2)">解析失败：</b>'+esc(e.message||'未知错误')+'。把正文粘到右侧文本框即可继续诊断。';
+    }
+  };
+  fr.readAsArrayBuffer(f);
+}
+function runDiag(t,src,warn){
+  var t0=Date.now();
+  $('parsetip').textContent='诊断中…';
+  setTimeout(function(){
+    renderReport(t,{src:src,sec:((Date.now()-t0)/1000).toFixed(1),warn:warn||''});
+    $('parsetip').textContent='完成 · '+cLen(t)+' 字';
+    $('reportzone').scrollIntoView({behavior:'smooth',block:'start'});
+  },120);
+}
+var DEMO_BP='项目背景：随着人工智能技术的快速发展，[行业] 市场规模巨大，前景广阔。据统计，未来几年该市场将保持高速增长，市场规模有望达到千亿级别。\n'+
+'我们的产品采用先进的人工智能算法，技术国际领先，能够彻底解决用户在[场景]中的痛点，极大提升效率。产品优势明显，功能强大，用户体验极佳，广受好评。\n'+
+'商业模式：我们采用 B 端收费、C 端免费的模式，未来还将拓展广告、数据服务等更多盈利渠道，盈利模式清晰，变现能力强。\n'+
+'团队介绍：团队由多名优秀在校大学生组成，专业背景多元，结构合理，执行力强，指导老师为学院资深教授，具有丰富的项目经验。\n'+
+'社会价值：本项目将带动就业，助力乡村振兴，具有良好的社会效益，我们相信在各方的支持下，项目必将取得巨大成功。\n'+
+'融资需求：本轮计划融资 500 万元，主要用于技术研发与市场推广。我们将致力于打造一流的产品，赋能行业发展。';
+
+/* ---------- 初始化 ---------- */
+$('tmrstart').onclick=toggleTmr;
+$('tmrreset').onclick=function(){stopTmr();setTimer();$('tmrhint').textContent='照稿念一遍，超时就是临场最大的扣分项'};
+Array.prototype.forEach.call($('nav').children,function(b){
+  b.onclick=function(){
+    Array.prototype.forEach.call($('nav').children,function(x){x.classList.remove('on')});
+    b.classList.add('on');
+    $(b.dataset.go).scrollIntoView({behavior:'smooth',block:'start'});
+  };
+});
+renderPglist();renderPage();renderDims();renderQlist();
+renderRounds();renderR4();renderLog();m3Init();init05();
+$('storeinfo').textContent='内容已本地保存';
+</script>
+</body>
+</html>
